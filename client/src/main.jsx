@@ -21,9 +21,13 @@ const UserRoundX = makeIcon('❌');
 const Users = makeIcon('👥');
 const Volume2 = makeIcon('🔊');
 import './style.css';
+const API =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5001";
 
-const API = 'http://localhost:5001';
-const socket = io(API);
+const socket = io(API, {
+  transports: ["websocket", "polling"]
+});
 const REASONS = ['Checkup','Fever','Cold','Headache','Follow Up','Back Pain','Joint Pain','Fracture','Child Consultation','Vaccination','Skin Allergy','Rash','Emergency'];
 const SPECS = ['General Doc','Orthopedics','Pediatrics','Dermatology','ENT','Cardiology'];
 const LANGUAGES = {
