@@ -1,0 +1,20 @@
+{
+  "name": "queuecure-client",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "queuecure-v10-reception-control-stable": "file:..",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "socket.io-client": "4.7.5"
+  },
+  "devDependencies": {
+    "vite": "5.4.11"
+  }
+}
