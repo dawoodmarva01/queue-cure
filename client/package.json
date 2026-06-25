@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5173",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
     "queuecure-v10-reception-control-stable": "file:..",
@@ -15,6 +16,10 @@
     "socket.io-client": "4.7.5"
   },
   "devDependencies": {
-    "vite": "5.4.11"
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "jsdom": "^29.1.1",
+    "vite": "5.4.11",
+    "vitest": "^4.1.9"
   }
 }

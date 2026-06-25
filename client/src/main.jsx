@@ -174,14 +174,14 @@ function App(){
     });
     return ()=>{ socket.off('queue_update'); socket.off('voice_announce'); };
   },[]);
-  if(!state) return <div className="loading">Loading QueueCure...</div>;
+  if(!state) return <div className="loading">Loading QueueCure AI...</div>;
   return <><Toast text={toast}/>{waitingMode ? <Waiting state={state}/> : <Reception state={state}/>}</>;
 }
 function Toast({text}){ return text ? <div className="toast"><Bell size={18}/>{text}</div> : null; }
 
 function Reception({state}){
   return <main className="page receptionPage">
-    <Header title="Reception Command Center"badge={`${state.stats.health.label} · ${state.stats.health.score}%`}/>
+    <Header title="QueueCure AI Reception Command Center"badge={`${state.stats.health.label} · ${state.stats.health.score}%`}/>
     <div className="statGrid">
       <Stat icon={<Users/>} label="Waiting" value={state.stats.health.waiting}/>
       <Stat icon={<Stethoscope/>} label="Doctors Free" value={`${state.stats.doctorsFree}/${state.stats.doctorsAvailable}`}/>
@@ -330,7 +330,7 @@ function Waiting({state}){
   const current = state.called[0];
   const heroLabel = current ? statusLabel(current.status).toUpperCase() : 'WAITING ROOM';
   return <main className="page waitingPage">
-    <Header title="Patient Waiting Room" badge="Voice enabled"/>
+    <Header title="QueueCure AI Patient Waiting Room" badge="Voice enabled"/>
     <section className="waitingSettingsBar"><Languages size={18}/> Announcement: <b>{LANGUAGES[voiceLang]?.label || 'English'}</b> · Privacy: <b>{privacyMode ? 'On' : 'Off'}</b></section>
     <section className={`tvHero ${current?.status || ''}`}>
       <p>{heroLabel}</p>
