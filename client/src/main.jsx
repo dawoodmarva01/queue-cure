@@ -24,6 +24,7 @@ import './style.css';
 const API =
   import.meta.env.VITE_API_URL ||
   "https://queue-cure-backend-sy87.onrender.com";
+  
 
 const socket = io(API, {
   transports: ["websocket", "polling"]
@@ -313,7 +314,7 @@ function PatientActions({patient, doctors}){
     {patient.status==='skipped' && <button className="mini" onClick={()=>api(`/api/queue/recall/${patient.id}`,{method:'POST'})}>Recall</button>}
     {canShift && availableDoctors.length > 0 ? <>
       <select value={doctorId} onChange={e=>setDoctorId(e.target.value)}>
-        <option value="">Shift to doctor...</option>
+        <option value="">Shift to Doc</option>
         {availableDoctors.map(d=><option key={d.id} value={d.id}>{d.name} — {d.specialist}</option>)}
       </select>
       <button className="shiftBtn" onClick={shift} disabled={!doctorId}><MoveRight size={14}/> Shift</button>
@@ -330,7 +331,7 @@ function Waiting({state}){
   const heroLabel = current ? statusLabel(current.status).toUpperCase() : 'WAITING ROOM';
   return <main className="page waitingPage">
     <Header title="Patient Waiting Room" badge="Voice enabled"/>
-    <section className="waitingSettingsBar"><Languages size={18}/> Announcement: <b>{LANGUAGES[voiceLang]?.label || 'English'}</b> · Privacy: <b>{privacyMode ? 'On' : 'Off'}</b> · Controlled by Reception</section>
+    <section className="waitingSettingsBar"><Languages size={18}/> Announcement: <b>{LANGUAGES[voiceLang]?.label || 'English'}</b> · Privacy: <b>{privacyMode ? 'On' : 'Off'}</b></section>
     <section className={`tvHero ${current?.status || ''}`}>
       <p>{heroLabel}</p>
       <h1>{current?.tokenNumber || '—'}</h1>
